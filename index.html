@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nancy Levesque — Communications Director</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #2a7c76;
+    --teal-light: #3a9e97;
+    --teal-dark: #1d5c57;
+    --cream: #faf8f4;
+    --warm-white: #fff9f2;
+    --charcoal: #1e1e1e;
+    --mid: #555;
+    --soft: #888;
+    --border: #e8e0d5;
+    --accent: #c9773a;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--charcoal);
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 48px;
+    background: rgba(250,248,244,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--teal-dark);
+    letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal); }
+
+  /* HERO */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 80px;
+  }
+  .hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 60px 80px 72px;
+  }
+  .hero-tag {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 20px;
+  }
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    line-height: 1.1;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+  }
+  .hero-title {
+    font-size: 1.1rem;
+    color: var(--teal);
+    font-weight: 500;
+    margin-bottom: 28px;
+    letter-spacing: 0.01em;
+  }
+  .hero-bio {
+    font-size: 1rem;
+    color: var(--mid);
+    max-width: 480px;
+    margin-bottom: 40px;
+    font-weight: 300;
+    line-height: 1.8;
+  }
+  .hero-stats {
+    display: flex; gap: 36px; margin-bottom: 44px;
+    padding-top: 28px;
+    border-top: 1px solid var(--border);
+  }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--teal);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--soft);
+    margin-top: 4px;
+    font-weight: 500;
+  }
+  .hero-cta {
+    display: flex; gap: 16px; flex-wrap: wrap;
+  }
+  .btn-primary {
+    display: inline-block;
+    background: var(--teal);
+    color: #fff;
+    padding: 14px 32px;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn-primary:hover { background: var(--teal-dark); transform: translateY(-1px); }
+  .btn-outline {
+    display: inline-block;
+    border: 1.5px solid var(--teal);
+    color: var(--teal);
+    padding: 13px 28px;
+    border-radius: 2px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: var(--teal); color: #fff; }
+
+  .hero-right {
+    position: relative;
+    background: var(--teal-dark);
+    overflow: hidden;
+  }
+  .hero-img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    opacity: 0.88;
+    mix-blend-mode: luminosity;
+  }
+  .hero-img-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(135deg, rgba(29,92,87,0.45) 0%, rgba(42,124,118,0.15) 100%);
+  }
+  .hero-badge {
+    position: absolute;
+    bottom: 40px; left: 40px;
+    background: rgba(250,248,244,0.95);
+    padding: 16px 20px;
+    border-radius: 2px;
+    border-left: 3px solid var(--accent);
+    max-width: 220px;
+  }
+  .hero-badge-text {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: var(--charcoal);
+    line-height: 1.5;
+  }
+  .hero-badge-name {
+    font-size: 0.7rem;
+    color: var(--soft);
+    margin-top: 4px;
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 72px; }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 3vw, 2.8rem);
+    color: var(--charcoal);
+    margin-bottom: 48px;
+    line-height: 1.2;
+  }
+
+  /* ABOUT */
+  #about { background: var(--warm-white); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--mid);
+    font-weight: 300;
+    margin-bottom: 20px;
+    font-size: 1.02rem;
+  }
+  .skills-cloud {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 32px;
+  }
+  .skill-tag {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 6px 16px;
+    border-radius: 100px;
+    font-size: 0.78rem;
+    color: var(--teal-dark);
+    font-weight: 500;
+  }
+  .about-aside {}
+  .cert-box {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 28px;
+    border-radius: 2px;
+    margin-bottom: 24px;
+  }
+  .cert-box h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    margin-bottom: 14px;
+    color: var(--teal-dark);
+  }
+  .cert-item {
+    font-size: 0.85rem;
+    color: var(--mid);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 10px;
+  }
+  .cert-item:last-child { border-bottom: none; }
+  .cert-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--teal); flex-shrink: 0;
+  }
+
+  /* PERSONAL */
+  .personal-strip {
+    background: var(--teal-dark);
+    color: #fff;
+    padding: 48px 72px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+  .personal-intro {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    font-style: italic;
+    flex-shrink: 0;
+    opacity: 0.9;
+  }
+  .personal-items {
+    display: flex; gap: 40px; flex-wrap: wrap;
+  }
+  .personal-item {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .personal-icon { font-size: 1.4rem; }
+  .personal-label { font-size: 0.9rem; opacity: 0.85; font-weight: 300; }
+  .personal-dog-img {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 30%;
+    border: 3px solid rgba(255,255,255,0.3);
+    flex-shrink: 0;
+  }
+
+  /* WORK / CASE STUDIES */
+  #work { background: var(--cream); }
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+  .case-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .case-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  }
+  .case-header {
+    background: var(--teal);
+    padding: 28px 32px;
+    color: #fff;
+  }
+  .case-org {
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 8px;
+  }
+  .case-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.3rem;
+    line-height: 1.3;
+  }
+  .case-body { padding: 28px 32px; }
+  .case-section-label {
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 8px;
+  }
+  .case-text {
+    font-size: 0.88rem;
+    color: var(--mid);
+    font-weight: 300;
+    margin-bottom: 20px;
+    line-height: 1.7;
+  }
+  .results-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .results-list li {
+    font-size: 0.85rem;
+    color: var(--charcoal);
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-weight: 400;
+  }
+  .results-list li::before {
+    content: '↗';
+    color: var(--teal);
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  /* EXPERIENCE */
+  #experience { background: var(--warm-white); }
+  .timeline {
+    max-width: 800px;
+    position: relative;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 1px;
+    background: var(--border);
+  }
+  .timeline-item {
+    padding-left: 32px;
+    padding-bottom: 48px;
+    position: relative;
+  }
+  .timeline-item:last-child { padding-bottom: 0; }
+  .timeline-dot {
+    position: absolute;
+    left: -5px; top: 6px;
+    width: 11px; height: 11px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: 2px solid var(--warm-white);
+  }
+  .timeline-date {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  .timeline-role {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.15rem;
+    margin-bottom: 2px;
+  }
+  .timeline-org {
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--teal);
+    margin-bottom: 12px;
+  }
+  .timeline-bullets {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .timeline-bullets li {
+    font-size: 0.88rem;
+    color: var(--mid);
+    font-weight: 300;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.6;
+  }
+  .timeline-bullets li::before {
+    content: '—';
+    position: absolute; left: 0;
+    color: var(--border);
+  }
+
+  /* TESTIMONIALS */
+  #testimonials { background: var(--cream); }
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+  .testimonial-card {
+    background: #fff;
+    border: 1px solid var(--border);
+    padding: 32px;
+    border-radius: 2px;
+    position: relative;
+  }
+  .testimonial-card::before {
+    content: '"';
+    font-family: 'Playfair Display', serif;
+    font-size: 5rem;
+    color: var(--teal);
+    opacity: 0.12;
+    position: absolute;
+    top: 8px; left: 20px;
+    line-height: 1;
+  }
+  .testimonial-text {
+    font-size: 0.9rem;
+    color: var(--mid);
+    font-weight: 300;
+    font-style: italic;
+    line-height: 1.75;
+    margin-bottom: 24px;
+    position: relative;
+    z-index: 1;
+  }
+  .testimonial-author {
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--charcoal);
+  }
+  .testimonial-role {
+    font-size: 0.78rem;
+    color: var(--soft);
+    margin-top: 2px;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--teal-dark);
+    color: #fff;
+    text-align: center;
+    padding: 100px 72px;
+  }
+  #contact .section-label { color: rgba(255,255,255,0.5); }
+  #contact .section-title { color: #fff; margin-bottom: 20px; }
+  .contact-sub {
+    font-size: 1rem;
+    opacity: 0.7;
+    margin-bottom: 56px;
+    font-weight: 300;
+    max-width: 460px;
+    margin-left: auto; margin-right: auto;
+  }
+  .contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 0.9rem;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    padding-bottom: 2px;
+  }
+  .contact-link:hover { opacity: 1; border-bottom-color: #fff; }
+  .contact-icon { font-size: 1.1rem; }
+
+  footer {
+    background: #141a19;
+    color: rgba(255,255,255,0.35);
+    text-align: center;
+    padding: 20px;
+    font-size: 0.75rem;
+    letter-spacing: 0.06em;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .hero-left > * {
+    opacity: 0;
+    animation: fadeUp 0.7s ease forwards;
+  }
+  .hero-tag          { animation-delay: 0.1s; }
+  .hero-name         { animation-delay: 0.2s; }
+  .hero-title        { animation-delay: 0.3s; }
+  .hero-bio          { animation-delay: 0.35s; }
+  .hero-stats        { animation-delay: 0.45s; }
+  .hero-cta          { animation-delay: 0.55s; }
+
+  @media (max-width: 900px) {
+    nav { padding: 16px 24px; }
+    .nav-links { gap: 20px; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { height: 380px; }
+    .hero-left { padding: 60px 32px 60px; }
+    section { padding: 72px 32px; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .work-grid { grid-template-columns: 1fr; }
+    .testimonials-grid { grid-template-columns: 1fr; }
+    .personal-strip { padding: 40px 32px; gap: 32px; }
+    #contact { padding: 72px 32px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Nancy Levesque</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Communications Director &amp; Consultant</div>
+    <h1 class="hero-name">Nancy<br>Levesque</h1>
+    <div class="hero-title">Turning Strategy Into Action for Mission-Driven Teams</div>
+    <p class="hero-bio">I partner with mission-driven organizations to create communications that audiences can relate to and feel compelled to act on — translating big-picture goals into real, executed work that drives impact.</p>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">90%</div>
+        <div class="stat-label">increase in<br>media mentions</div>
+      </div>
+      <div>
+        <div class="stat-num">47%</div>
+        <div class="stat-label">boost in social<br>engagement</div>
+      </div>
+      <div>
+        <div class="stat-num">15+</div>
+        <div class="stat-label">years driving<br>social impact</div>
+      </div>
+    </div>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">Get in touch</a>
+      <a href="#work" class="btn-outline">See my work</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="NancyL-042_websize.jpg" alt="Nancy Levesque" class="hero-img">
+    <div class="hero-img-overlay"></div>
+    <div class="hero-badge">
+      <div class="hero-badge-text">"Keeps all the balls in the air and makes important work keep moving."</div>
+      <div class="hero-badge-name">LinkedIn Profile</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About Me</div>
+  <h2 class="section-title">The communicator behind<br><em>the mission</em></h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>I bring clarity to ambiguity. Whether rebuilding a communications department from scratch, launching a national PSA, or translating complex tech policy into accessible messaging, I connect the dots and keep teams aligned.</p>
+      <p>As Senior Director of Communications at the Future of Privacy Forum, I rebuilt the entire communications program — growing media placements by 90% and social engagement by 47% in under three years. At Fight Colorectal Cancer, I led a full rebrand, website overhaul, and national PSA that reached 10 million people and earned two national design awards.</p>
+      <p>Today I consult with mission-driven clients on communications strategy, PR, executive visibility, and storytelling that moves people to act. I'm also the nonprofit comms sub-group moderator for <em>Off the Record</em>, a private community for communications professionals.</p>
+      <div class="skills-cloud">
+        <span class="skill-tag">Strategic Communications</span>
+        <span class="skill-tag">Media Relations</span>
+        <span class="skill-tag">Brand Strategy</span>
+        <span class="skill-tag">Crisis Communications</span>
+        <span class="skill-tag">AI &amp; Tech Policy</span>
+        <span class="skill-tag">Team Building</span>
+        <span class="skill-tag">Digital Marketing</span>
+        <span class="skill-tag">Executive Communications</span>
+        <span class="skill-tag">Storytelling</span>
+        <span class="skill-tag">Content Strategy</span>
+        <span class="skill-tag">SEO</span>
+        <span class="skill-tag">Campaign Management</span>
+      </div>
+    </div>
+    <div class="about-aside">
+      <div class="cert-box">
+        <h4>Certifications</h4>
+        <div class="cert-item"><div class="cert-dot"></div>AI-First Communicator</div>
+        <div class="cert-item"><div class="cert-dot"></div>Marketing: High-Impact Storytelling</div>
+        <div class="cert-item"><div class="cert-dot"></div>Crisis Communication</div>
+      </div>
+      <div class="cert-box">
+        <h4>Awards</h4>
+        <div class="cert-item"><div class="cert-dot"></div>MARCOM Gold Award</div>
+        <div class="cert-item"><div class="cert-dot"></div>Aster Gold Award (2020)</div>
+        <div class="cert-item"><div class="cert-dot"></div>GDUSA Health &amp; Wellness Award (2020)</div>
+      </div>
+      <div class="cert-box">
+        <h4>Publications &amp; Press</h4>
+        <div class="cert-item"><div class="cert-dot"></div><em>Beyond Blue Magazine</em> — redesign lead</div>
+        <div class="cert-item"><div class="cert-dot"></div>The New York Times, Axios, Politico, The Hill</div>
+        <div class="cert-item"><div class="cert-dot"></div>"Summer Starts in September" — contributor</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAL STRIP -->
+<div class="personal-strip">
+  <img src="Cam_and_Louise.jpg" alt="Nancy with her dogs" class="personal-dog-img">
+  <div class="personal-intro">Beyond the work…</div>
+  <div class="personal-items">
+    <div class="personal-item">
+      <span class="personal-icon">✈️</span>
+      <span class="personal-label">Travel</span>
+    </div>
+    <div class="personal-item">
+      <span class="personal-icon">🍷</span>
+      <span class="personal-label">Wine</span>
+    </div>
+    <div class="personal-item">
+      <span class="personal-icon">🧘</span>
+      <span class="personal-label">Pilates</span>
+    </div>
+    <div class="personal-item">
+      <span class="personal-icon">🐾</span>
+      <span class="personal-label">Dog Walking</span>
+    </div>
+  </div>
+</div>
+
+<!-- WORK / CASE STUDIES -->
+<section id="work">
+  <div class="section-label">Featured Work</div>
+  <h2 class="section-title">Case studies in<br><em>mission-driven impact</em></h2>
+  <div class="work-grid">
+
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-org">Future of Privacy Forum</div>
+        <div class="case-title">Launching the Center for Artificial Intelligence</div>
+      </div>
+      <div class="case-body">
+        <div class="case-section-label">The Challenge</div>
+        <p class="case-text">AI's rapid growth created urgent need for trusted, nonpartisan policy guidance. FPF needed to establish its Center for AI as a credible global leader in ethical AI governance — differentiated from similar initiatives.</p>
+        <div class="case-section-label">The Approach</div>
+        <p class="case-text">Developed the Center's brand and "trusted convener" messaging, secured media coverage, engaged 220+ corporate members, aligned the launch with the inaugural AI Forward Summit, and built a full content ecosystem.</p>
+        <div class="case-section-label">Results</div>
+        <ul class="results-list">
+          <li>Trade &amp; government media coverage for the Center for AI and AI Forward Summit</li>
+          <li>High attendance from policymakers, industry leaders, and researchers</li>
+          <li>Endorsements from privacy leaders reinforcing credibility</li>
+          <li>Consistent on-message communications across all FPF staff</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-org">Fight Colorectal Cancer</div>
+        <div class="case-title">Revitalizing Brand &amp; Digital Presence</div>
+      </div>
+      <div class="case-body">
+        <div class="case-section-label">The Challenge</div>
+        <p class="case-text">Fight CRC's visual brand was confused with a competing organization, and its outdated website lacked the patient resources and advocacy tools its community needed most.</p>
+        <div class="case-section-label">The Approach</div>
+        <p class="case-text">Led a full brand overhaul and website redesign featuring a Patient Resource Center and Advocacy Action Center, driven by advocate buy-in and launched via community-led social media campaign.</p>
+        <div class="case-section-label">Results</div>
+        <ul class="results-list">
+          <li>Email subscribers up 25%; website traffic up 26%</li>
+          <li>Advocates became brand ambassadors, amplifying reach organically</li>
+          <li>Action Center drove measurable policy participation</li>
+          <li>Won 2020 Aster Gold &amp; GDUSA Health &amp; Wellness Awards</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-org">Future of Privacy Forum</div>
+        <div class="case-title">Rebuilding a High-Performing Comms Department</div>
+      </div>
+      <div class="case-body">
+        <div class="case-section-label">The Challenge</div>
+        <p class="case-text">FPF's communications program needed a complete rebuild — with new staff, systems, and a PR agency — to match the organization's growing influence in global tech policy.</p>
+        <div class="case-section-label">The Approach</div>
+        <p class="case-text">Hired and mentored a team, onboarded a PR agency, implemented a project brief process, and developed a crisis communications framework for rapid response.</p>
+        <div class="case-section-label">Results</div>
+        <ul class="results-list">
+          <li>90% increase in media mentions in under three years</li>
+          <li>47% boost in social media engagement</li>
+          <li>20% growth in email opt-ins</li>
+          <li>Nearly 130 placements in 2023 including NYT, Axios, Politico, The Hill</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="case-card">
+      <div class="case-header">
+        <div class="case-org">Maryland Coalition Against Sexual Assault</div>
+        <div class="case-title">"Rape Is Not Your Fault" Campaign</div>
+      </div>
+      <div class="case-body">
+        <div class="case-section-label">The Challenge</div>
+        <p class="case-text">Increase sexual assault reporting and advance prevention education across Maryland's college campuses and communities in partnership with the Maryland Department of Health and Mental Hygiene.</p>
+        <div class="case-section-label">The Approach</div>
+        <p class="case-text">Developed and executed the "Rape Is Not Your Fault" campaign in collaboration with the Baltimore mayor's office, Baltimore City Police, and the local SART office. Built statewide agency partnerships for awareness campaigns.</p>
+        <div class="case-section-label">Results</div>
+        <ul class="results-list">
+          <li>29% increase in sexual assault reporting within one year</li>
+          <li>Campaign reached thousands of Marylanders across the state</li>
+          <li>Launched college campus prevention campaign statewide</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <h2 class="section-title">15+ years of<br><em>mission-driven work</em></h2>
+  <div class="timeline">
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2025 – Present</div>
+      <div class="timeline-role">Communications &amp; PR Consultant</div>
+      <div class="timeline-org">N. Levesque Consulting · Frederick, MD</div>
+      <ul class="timeline-bullets">
+        <li>Advising executives on policy communications and stakeholder engagement</li>
+        <li>Developed centralized patient storytelling database, reducing story sourcing time by 20%</li>
+        <li>Writing and editing LinkedIn content, position statements, and speaking remarks for social impact CEOs</li>
+        <li>Integrated AI insights into media monitoring and engagement tracking</li>
+        <li>Vetted member of CommsConsultants.com; nonprofit comms moderator at Off the Record</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2021 – 2024</div>
+      <div class="timeline-role">Senior Director, Communications</div>
+      <div class="timeline-org">Future of Privacy Forum · Washington, DC</div>
+      <ul class="timeline-bullets">
+        <li>Rebuilt communications department; hired and mentored team, onboarded PR agency</li>
+        <li>Drove 90% increase in media mentions and 47% boost in social engagement</li>
+        <li>Secured nearly 130 placements in 2023 including NYT, Axios, Politico, The Hill</li>
+        <li>Led communications strategy for FPF's Center for AI and AI Forward Summit</li>
+        <li>Developed crisis communications framework for rapid reputation management</li>
+        <li>Promoted from Director to Senior Director in 2023</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2018 – 2020</div>
+      <div class="timeline-role">Director of Communications</div>
+      <div class="timeline-org">Fight Colorectal Cancer · Remote</div>
+      <ul class="timeline-bullets">
+        <li>Led team of 5 in executing campaigns for patient support, advocacy, and policy change</li>
+        <li>Produced national PSA with PGA Tour pro Tom Lehman — aired 3,000+ times, 10M impressions</li>
+        <li>Website redesign boosted subscribers 25% and traffic 26%</li>
+        <li>Award-winning magazine redesign: 2020 Aster Gold &amp; GDUSA Health &amp; Wellness Awards</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2016 – 2018</div>
+      <div class="timeline-role">Marketing &amp; Communications Consultant</div>
+      <div class="timeline-org">N. Levesque Consulting · Frederick, MD</div>
+      <ul class="timeline-bullets">
+        <li>Founded consultancy serving healthcare and government clients</li>
+        <li>Crafted strategic messaging elevating leadership communication and brand perception</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2012 – 2016</div>
+      <div class="timeline-role">Director, Marketing &amp; Communications</div>
+      <div class="timeline-org">National Summer Learning Association · Baltimore, MD</div>
+      <ul class="timeline-bullets">
+        <li>Directed comms for event featuring First Lady Michelle Obama; drafted PSA for Mrs. Obama</li>
+        <li>Forged national partnership with Reading is Fundamental, landing coverage in E! News, The Washington Post, and Education Week</li>
+        <li>Coordinated with The White House and U.S. Dept. of Education on event strategy and messaging</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-dot"></div>
+      <div class="timeline-date">2010 – 2012</div>
+      <div class="timeline-role">Communications Manager</div>
+      <div class="timeline-org">Maryland Coalition Against Sexual Assault · Annapolis, MD</div>
+      <ul class="timeline-bullets">
+        <li>Developed and launched "Rape Is Not Your Fault" — 29% increase in sexual assault reporting in one year</li>
+        <li>Launched college campus prevention campaign statewide with MD Dept. of Health</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-label">Testimonials</div>
+  <h2 class="section-title">What colleagues say</h2>
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card">
+      <p class="testimonial-text">Nancy is one of those rare communicators who can move seamlessly between big-picture strategy and the day-to-day work it takes to execute it. She keeps every project on message, on time, and moving forward — even when the path isn't clear.</p>
+      <div class="testimonial-author">Senior Colleague</div>
+      <div class="testimonial-role">Future of Privacy Forum</div>
+    </div>
+
+    <div class="testimonial-card">
+      <p class="testimonial-text">What sets Nancy apart is her ability to take complex, technical subject matter and make it feel human and urgent. She built our comms program from the ground up and the results speak for themselves.</p>
+      <div class="testimonial-author">Executive Leadership</div>
+      <div class="testimonial-role">Tech Policy Nonprofit</div>
+    </div>
+
+    <div class="testimonial-card">
+      <p class="testimonial-text">Nancy brought our organization's mission to life in ways we hadn't imagined. Her instinct for storytelling and her mastery of earned media made a real difference in our visibility and our impact on patients and advocates.</p>
+      <div class="testimonial-author">Campaign Partner</div>
+      <div class="testimonial-role">Cancer Advocacy Organization</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Let's Connect</div>
+  <h2 class="section-title">Ready to work together?</h2>
+  <p class="contact-sub">Whether you need strategic communications, PR support, or a thought partner for your next campaign — I'd love to connect.</p>
+  <div class="contact-links">
+    <a href="mailto:nslevesque@gmail.com" class="contact-link">
+      <span class="contact-icon">✉</span>
+      nslevesque@gmail.com
+    </a>
+    <a href="tel:4436911986" class="contact-link">
+      <span class="contact-icon">☎</span>
+      443-691-1986
+    </a>
+    <a href="https://www.linkedin.com/in/nancylevesque" target="_blank" class="contact-link">
+      <span class="contact-icon">in</span>
+      linkedin.com/in/nancylevesque
+    </a>
+  </div>
+</section>
+
+<footer>
+  © 2026 Nancy Levesque · Communications Director &amp; Consultant
+</footer>
+
+</body>
+</html>
