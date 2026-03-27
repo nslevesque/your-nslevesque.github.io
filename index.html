@@ -162,12 +162,11 @@
     width: 100%; height: 100%;
     object-fit: cover;
     object-position: center top;
-    opacity: 0.88;
-    mix-blend-mode: luminosity;
+    opacity: 1;
   }
   .hero-img-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(135deg, rgba(29,92,87,0.45) 0%, rgba(42,124,118,0.15) 100%);
+    background: linear-gradient(to top, rgba(29,92,87,0.35) 0%, rgba(0,0,0,0) 50%);
   }
   .hero-badge {
     position: absolute;
@@ -191,7 +190,7 @@
   }
 
   /* SECTIONS */
-  section { padding: 100px 72px; }
+  section { padding: 64px 72px; }
   .section-label {
     font-size: 0.72rem;
     font-weight: 500;
@@ -288,12 +287,13 @@
   .personal-icon { font-size: 1.4rem; }
   .personal-label { font-size: 0.9rem; opacity: 0.85; font-weight: 300; }
   .personal-dog-img {
-    width: 80px; height: 80px;
+    width: 88px; height: 88px;
     border-radius: 50%;
     object-fit: cover;
-    object-position: center 30%;
-    border: 3px solid rgba(255,255,255,0.3);
+    object-position: center 20%;
+    border: 3px solid rgba(255,255,255,0.4);
     flex-shrink: 0;
+    display: block;
   }
 
   /* WORK / CASE STUDIES */
@@ -485,7 +485,7 @@
     background: var(--teal-dark);
     color: #fff;
     text-align: center;
-    padding: 100px 72px;
+    padding: 64px 72px;
   }
   #contact .section-label { color: rgba(255,255,255,0.5); }
   #contact .section-title { color: #fff; margin-bottom: 20px; }
@@ -602,8 +602,8 @@
     <img src="NancyL-042_websize.jpg" alt="Nancy Levesque" class="hero-img">
     <div class="hero-img-overlay"></div>
     <div class="hero-badge">
-      <div class="hero-badge-text">"Keeps all the balls in the air and makes important work keep moving."</div>
-      <div class="hero-badge-name">LinkedIn Profile</div>
+      <div class="hero-badge-text">"Her hunches around messaging and communications strategies — the true mark of her experience — are on point."</div>
+      <div class="hero-badge-name">Communications Colleague</div>
     </div>
   </div>
 </section>
@@ -673,7 +673,7 @@
       <span class="personal-label">Pilates</span>
     </div>
     <div class="personal-item">
-      <span class="personal-icon">🐾</span>
+      <span class="personal-icon" style="filter: brightness(0) invert(1);">🐾</span>
       <span class="personal-label">Dog Walking</span>
     </div>
   </div>
@@ -714,7 +714,7 @@
         <div class="case-section-label">The Challenge</div>
         <p class="case-text">Fight CRC's visual brand was confused with a competing organization, and its outdated website lacked the patient resources and advocacy tools its community needed most.</p>
         <div class="case-section-label">The Approach</div>
-        <p class="case-text">Led a full brand overhaul and website redesign featuring a Patient Resource Center and Advocacy Action Center, driven by advocate buy-in and launched via community-led social media campaign.</p>
+        <p class="case-text">Led a full brand overhaul and website redesign featuring a Patient Resource Center and Advocacy Action Center, driven by advocate buy-in and launched via community-led social media campaign. Also redesigned <em>Beyond Blue Magazine</em>, earning two national design awards.</p>
         <div class="case-section-label">Results</div>
         <ul class="results-list">
           <li>Email subscribers up 25%; website traffic up 26%</li>
@@ -754,12 +754,12 @@
         <div class="case-section-label">The Challenge</div>
         <p class="case-text">Increase sexual assault reporting and advance prevention education across Maryland's college campuses and communities in partnership with the Maryland Department of Health and Mental Hygiene.</p>
         <div class="case-section-label">The Approach</div>
-        <p class="case-text">Developed and executed the "Rape Is Not Your Fault" campaign in collaboration with the Baltimore mayor's office, Baltimore City Police, and the local SART office. Built statewide agency partnerships for awareness campaigns.</p>
+        <p class="case-text">Developed and executed the "Rape Is Not Your Fault" campaign in collaboration with the Baltimore mayor's office, Baltimore City Police, and the local SART office. Recruited a graduate social impact graphic designer from the Maryland Institute and College of Art to lead creative.</p>
         <div class="case-section-label">Results</div>
         <ul class="results-list">
           <li>29% increase in sexual assault reporting within one year</li>
-          <li>Campaign reached thousands of Marylanders across the state</li>
-          <li>Launched college campus prevention campaign statewide</li>
+          <li>Positive local media sentiment amplified campaign reach and credibility</li>
+          <li>Enhanced cross-collaboration between city partners and community stakeholders</li>
         </ul>
       </div>
     </div>
@@ -865,9 +865,9 @@
     </div>
 
     <div class="testimonial-card">
-      <p class="testimonial-text">What sets Nancy apart is her ability to take complex, technical subject matter and make it feel human and urgent. She built our comms program from the ground up and the results speak for themselves.</p>
-      <div class="testimonial-author">Executive Leadership</div>
-      <div class="testimonial-role">Tech Policy Nonprofit</div>
+      <p class="testimonial-text">Nancy has been a trusted advisor to me on navigating the comms landscape in the US especially, and her hunches around messaging and communications strategies — the true mark of her experience — are on point.</p>
+      <div class="testimonial-author">Communications Colleague</div>
+      <div class="testimonial-role">International Partner</div>
     </div>
 
     <div class="testimonial-card">
@@ -885,9 +885,9 @@
   <h2 class="section-title">Ready to work together?</h2>
   <p class="contact-sub">Whether you need strategic communications, PR support, or a thought partner for your next campaign — I'd love to connect.</p>
   <div class="contact-links">
-    <a href="mailto:nslevesque@gmail.com" class="contact-link">
+    <a href="/cdn-cgi/l/email-protection#f59b869990839086848090b59298949c99db969a98" class="contact-link">
       <span class="contact-icon">✉</span>
-      nslevesque@gmail.com
+      <span class="__cf_email__" data-cfemail="94fae7f8f1e2f1e7e5e1f1d4f3f9f5fdf8baf7fbf9">[email&#160;protected]</span>
     </a>
     <a href="tel:4436911986" class="contact-link">
       <span class="contact-icon">☎</span>
@@ -901,7 +901,7 @@
 </section>
 
 <footer>
-  © 2026 Nancy Levesque · Communications Director &amp; Consultant
+  © 2026 Nancy Levesque · Communications Director &amp; Consultant &nbsp;·&nbsp; Vibe coded using <a href="https://claude.ai" target="_blank" style="color:rgba(255,255,255,0.5); text-decoration:underline;">Claude</a>
 </footer>
 
 </body>
