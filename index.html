@@ -546,18 +546,76 @@
   .hero-stats        { animation-delay: 0.45s; }
   .hero-cta          { animation-delay: 0.55s; }
 
+  /* HAMBURGER */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 26px; height: 18px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 101;
+  }
+  .hamburger span {
+    display: block;
+    width: 100%; height: 2px;
+    background: var(--teal-dark);
+    border-radius: 2px;
+    transition: all 0.3s ease;
+  }
+  .hamburger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .hamburger.open span:nth-child(2) { opacity: 0; }
+  .hamburger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
   @media (max-width: 900px) {
     nav { padding: 16px 24px; }
-    .nav-links { gap: 20px; }
-    #hero { grid-template-columns: 1fr; }
-    .hero-right { height: 380px; }
-    .hero-left { padding: 60px 32px 60px; }
+    .hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      flex-direction: column;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(250,248,244,0.98);
+      justify-content: center;
+      align-items: center;
+      gap: 36px;
+      z-index: 100;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links a { font-size: 1.2rem; letter-spacing: 0.12em; }
+    #hero { grid-template-columns: 1fr; max-height: none; }
+    .hero-right { height: 380px; margin-top: 80px; }
+    .hero-left { padding: 48px 32px 40px; padding-top: 100px; }
     section { padding: 72px 32px; }
     .about-grid { grid-template-columns: 1fr; gap: 40px; }
     .work-grid { grid-template-columns: 1fr; }
     .testimonials-grid { grid-template-columns: 1fr; }
-    .personal-strip { padding: 40px 32px; gap: 32px; }
+    .personal-strip { padding: 40px 32px; gap: 32px; flex-wrap: wrap; }
     #contact { padding: 72px 32px; }
+    #about { padding-top: 72px; }
+  }
+
+  @media (max-width: 600px) {
+    .hero-right { height: 300px; }
+    .hero-left { padding: 24px 20px 32px; padding-top: 90px; }
+    .hero-stats { gap: 20px; flex-wrap: wrap; }
+    .hero-cta { flex-direction: column; }
+    .btn-primary, .btn-outline { text-align: center; }
+    section { padding: 64px 20px; }
+    #about { padding-top: 64px; }
+    .section-title { font-size: 1.7rem; margin-bottom: 32px; }
+    .personal-strip { padding: 40px 20px; gap: 24px; }
+    .personal-items { gap: 24px; flex-wrap: wrap; }
+    .case-header { padding: 24px 20px; }
+    .case-body { padding: 24px 20px; }
+    .testimonial-card { padding: 28px 20px; }
+    .timeline-item { padding-left: 24px; padding-bottom: 40px; }
+    .hero-badge { left: 16px; bottom: 16px; max-width: 180px; }
+    .hero-badge-text { font-size: 0.7rem; }
+    .contact-links { flex-direction: column; align-items: center; gap: 20px; }
+    #contact { padding: 64px 20px; }
   }
 </style>
 </head>
@@ -566,13 +624,16 @@
 <!-- NAV -->
 <nav>
   <div class="nav-logo">Nancy Levesque</div>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#work">Work</a></li>
-    <li><a href="#experience">Experience</a></li>
-    <li><a href="#testimonials">Testimonials</a></li>
-    <li><a href="#contact">Contact</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about" onclick="closeMenu()">About</a></li>
+    <li><a href="#work" onclick="closeMenu()">Work</a></li>
+    <li><a href="#experience" onclick="closeMenu()">Experience</a></li>
+    <li><a href="#testimonials" onclick="closeMenu()">Testimonials</a></li>
+    <li><a href="#contact" onclick="closeMenu()">Contact</a></li>
   </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMenu()" aria-label="Toggle menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -906,6 +967,21 @@
 <footer>
   © 2026 Nancy Levesque · Communications Director &amp; Consultant &nbsp;·&nbsp; Vibe coded using <a href="https://claude.ai" target="_blank" style="color:rgba(255,255,255,0.5); text-decoration:underline;">Claude</a>
 </footer>
+
+<script>
+  function toggleMenu() {
+    const nav = document.getElementById('navLinks');
+    const btn = document.getElementById('hamburger');
+    nav.classList.toggle('open');
+    btn.classList.toggle('open');
+  }
+  function closeMenu() {
+    const nav = document.getElementById('navLinks');
+    const btn = document.getElementById('hamburger');
+    nav.classList.remove('open');
+    btn.classList.remove('open');
+  }
+</script>
 
 </body>
 </html>
